@@ -34,12 +34,37 @@ def AddImage(info, basename, dest):
   if path not in info.input_zip.namelist():
     return
 
+def AddImageRadio(info, basename, dest):
+  name = basename
+  path = "RADIO/" + name
+  if path not in info.input_zip.namelist():
+    return
+
   data = info.input_zip.read(path)
   common.ZipWriteStr(info.output_zip, basename, data)
-  info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
+  info.script.Print("Patching {} image...".format(dest.split('/')[-1]))
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
 
 def OTA_InstallEnd(info):
   AddImage(info, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+
+# Firmware
+  AddImageRadio(info, "abl.elf", "/dev/block/bootdevice/by-name/abl_a")
+  AddImageRadio(info, "abl.elf", "/dev/block/bootdevice/by-name/abl_b")
+  AddImageRadio(info, "cmnlib64.img", "/dev/block/bootdevice/by-name/cmnlib64_a")
+  AddImageRadio(info, "aop.img", "/dev/block/bootdevice/by-name/aop_a")
+  AddImageRadio(info, "devcfg.img", "/dev/block/bootdevice/by-name/devcfg_a")
+  AddImageRadio(info, "qupfw.img", "/dev/block/bootdevice/by-name/qupfw_a")
+  AddImageRadio(info, "tz.img", "/dev/block/bootdevice/by-name/tz_a")
+  AddImageRadio(info, "storsec.img", "/dev/block/bootdevice/by-name/storsec_a")
+  AddImageRadio(info, "keymaster.img", "/dev/block/bootdevice/by-name/keymaster_a")
+  AddImageRadio(info, "bluetooth.img", "/dev/block/bootdevice/by-name/bluetooth")
+  AddImageRadio(info, "xbl.img", "/dev/block/bootdevice/by-name/xbl_a")
+  AddImageRadio(info, "modem.img", "/dev/block/bootdevice/by-name/modem")
+  AddImageRadio(info, "xbl_config.img", "/dev/block/bootdevice/by-name/xbl_config_a")
+  AddImageRadio(info, "dsp.img", "/dev/block/bootdevice/by-name/dsp")
+  AddImageRadio(info, "logo.img", "/dev/block/bootdevice/by-name/logo")
+  AddImageRadio(info, "cmnlib.img", "/dev/block/bootdevice/by-name/cmnlib_a")
+  AddImageRadio(info, "hyp.img", "/dev/block/bootdevice/by-name/hyp_a")
   return

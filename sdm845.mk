@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2022 The LineageOS Project
+# Copyright (C) The AOSP Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -388,6 +388,9 @@ PRODUCT_BOOT_JARS += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/sdm845-common/sdm845-common-vendor.mk)
+
+# Call Firmware setup
+$(call inherit-product, firmware/xiaomi/beryllium/Android.mk)
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
