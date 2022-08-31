@@ -50,8 +50,8 @@ def OTA_InstallEnd(info):
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
 
 # Firmware
-  AddImageRadio(info, "abl.elf", "/dev/block/bootdevice/by-name/abl_a")
-  AddImageRadio(info, "abl.elf", "/dev/block/bootdevice/by-name/abl_b")
+  AddImageRadio(info, "abl_a.elf", "/dev/block/bootdevice/by-name/abl_a")
+  AddImageRadio(info, "abl_b.elf", "/dev/block/bootdevice/by-name/abl_b")
   AddImageRadio(info, "cmnlib64.img", "/dev/block/bootdevice/by-name/cmnlib64_a")
   AddImageRadio(info, "aop.img", "/dev/block/bootdevice/by-name/aop_a")
   AddImageRadio(info, "devcfg.img", "/dev/block/bootdevice/by-name/devcfg_a")
