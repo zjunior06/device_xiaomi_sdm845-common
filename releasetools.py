@@ -64,7 +64,6 @@ def OTA_InstallEnd(info):
   AddImageRadio(info, "modem.img", "/dev/block/bootdevice/by-name/modem")
   AddImageRadio(info, "xbl_config.img", "/dev/block/bootdevice/by-name/xbl_config_a")
   AddImageRadio(info, "dsp.img", "/dev/block/bootdevice/by-name/dsp")
-  AddImageRadio(info, "logo.img", "/dev/block/bootdevice/by-name/logo")
   AddImageRadio(info, "cmnlib.img", "/dev/block/bootdevice/by-name/cmnlib_a")
   AddImageRadio(info, "hyp.img", "/dev/block/bootdevice/by-name/hyp_a")
   return
